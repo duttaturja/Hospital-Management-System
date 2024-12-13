@@ -20,21 +20,17 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 - Automate billing workflows with support for insurance claims and payment tracking.  
 - Generate detailed invoices for patients and stakeholders.  
 
-### 🧪 Laboratory and Diagnostics  
-- Schedule tests and manage lab reports digitally.  
-- Integrate seamlessly with diagnostic tools for faster result generation.  
+### 🏨 Rooms Management  
+- Allocate rooms to in-patients based on availability.  
+- Maintain records of room types (general, private, ICU) and their occupancy status.    
 
-### 📦 Inventory Management  
-- Monitor medical supplies, drugs, and equipment stock levels.  
-- Automate alerts for low inventory to avoid shortages.  
+### 🗂️ Records Management  
+- Centralized management of patient medical records, staff data, and administrative documents.  
+- Easy retrieval and updates of historical records.    
 
-### 📂 Electronic Health Records (EHR)  
-- Maintain comprehensive digital health records for every patient.  
-- Ensure data privacy and accessibility for authorized personnel only.  
-
-### 📊 Analytics and Reporting  
-- Generate insightful reports on hospital operations.  
-- Analyze data for strategic decision-making and performance improvement.  
+### 💳 Payment Integration    
+- Integration with popular payment gateways for seamless transactions like stripe.  
+- Generate detailed receipts and transaction records for patients.    
 
 ---
 
@@ -54,7 +50,6 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 Ensure your system meets the following requirements:  
 - Python 3.8+  
 - Django Framework  
-- PostgreSQL (or preferred database)  
 
 ### Installation  
 1. **Clone the Repository:**  
@@ -117,8 +112,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 📞 Contact  
 
 For questions or support, contact us:  
-- **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com)  
-- **GitHub:** [@duttaturja](https://github.com/duttaturja)  
+- **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com) [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
+- **GitHub:** [@duttaturja](https://github.com/duttaturja)  [@ProbalSourav](https://github.com/ProbalSourav)
 
 ---  
 
