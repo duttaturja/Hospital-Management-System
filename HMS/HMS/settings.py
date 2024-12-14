@@ -39,6 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+USER_APPS=[
+    'bill_management',
+    'doctor_management',
+    'nurse_management',
+    'patient_management',
+    'records_management',
+    'rooms_management',
+    'user_management',
+]
+INSTALLED_APPS += USER_APPS
 
 BASE_APPS = [
     'doctor_management',
