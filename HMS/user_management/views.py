@@ -10,10 +10,10 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework_simplejwt.tokens import RefreshToken
 
 # from models
-from .models import User
+from user_management.models import User
 
 # from serializers    
-from .serializers import UserSerializer, AdminUserSerializer
+from user_management.serializers import UserSerializer, AdminUserSerializer
 
 class UserRegisterView(APIView):
     permission_classes = [AllowAny]
