@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 USER_APPS=[
     'bill_management',
     'doctor_management',
@@ -50,14 +51,14 @@ USER_APPS=[
 ]
 INSTALLED_APPS += USER_APPS
 
-BASE_APPS = [
-    'doctor_management',
-    'patient_management',
-    'records_management',
-    'rooms_management',
+THIRD_PARTY_APPS=[
+    'rest_framework',
+    'drf_spectacular',
+    'rest_framework_simplejwt.token_blacklist',
+    'jazzmin',
+    'django_redis',
 ]
-
-INSTALLED_APPS += BASE_APPS
+INSTALLED_APPS += THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,7 +75,14 @@ ROOT_URLCONF = 'HMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [str(BASE_DIR)+"/bill_management/templates",
+                 str(BASE_DIR)+"/doctor_management/templates",
+                 str(BASE_DIR)+"/nurse_management/templates",
+                 str(BASE_DIR)+"/patient_management/templates",
+                 str(BASE_DIR)+"/records_management/templates",
+                 str(BASE_DIR)+"/rooms_management/templates",
+                 str(BASE_DIR)+"/user_management/templates",
+                ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -181,10 +189,10 @@ CACHES = {
     }
 }
 # # API documentation settings
-# SPECTACULAR_SETTINGS = {
-#     'TITLE': 'Your Project API',
-#     'DESCRIPTION': 'Your project description',
-#     'VERSION': '1.0.0',
-#     'SERVE_INCLUDE_SCHEMA': False,
-#     # OTHER SETTINGS
-# }
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Hospital Management System API',
+    'DESCRIPTION': 'Api documentation for Hospital Management System',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}

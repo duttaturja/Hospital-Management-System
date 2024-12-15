@@ -1,5 +1,8 @@
 from django.db import models
 
+# from room models
+from rooms_management.models import Room
+
 class Nurse(models.Model):
     nurse_id = models.AutoField(primary_key=True)
     nurse_name = models.CharField(max_length=100)
