@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +49,7 @@ USER_APPS=[
     'rooms_management',
     'user_management',
 ]
-INSTALLED_APPS += USER_APPS
+
 
 THIRD_PARTY_APPS=[
     'rest_framework',
@@ -58,7 +58,7 @@ THIRD_PARTY_APPS=[
     'jazzmin',
     'django_redis',
 ]
-INSTALLED_APPS += THIRD_PARTY_APPS
+INSTALLED_APPS =DJANGO_APPS + USER_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
