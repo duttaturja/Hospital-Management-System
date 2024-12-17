@@ -8,18 +8,18 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
 # from models
-from .models import DoctorProfile, Appointment
+from doctor_management.models import DoctorProfile, Appointment
 
 # from serializers
-from .serializers import DoctorProfileSerializer, AppointmentSerializer
+from doctor_management.serializers import DoctorProfileSerializer, AppointmentSerializer
 
+# from oermissions
+from doctor_management.permissions import IsAdminOrDoctor, IsDoctorOnly
 
 class DoctorProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsDoctorOnly]
 
     def get(self, request):
-        if request.user.role != 'Doctor':
-            return Response({"error": "Only doctors can view their profile"}, status=status.HTTP_403_FORBIDDEN)
         try:
             doctor_profile = DoctorProfile.objects.get(user=request.user)
             serializer = DoctorProfileSerializer(doctor_profile)
@@ -28,8 +28,7 @@ class DoctorProfileView(APIView):
             return Response({"error": "Doctor profile not found"}, status=status.HTTP_404_NOT_FOUND)
 
     def post(self, request):
-        if request.user.role != 'Admin':
-            return Response({'error' : 'Only Admin can create doctor profiles.'}, status=status.HTTP_403_FORBIDDEN)
+        
         serializer = DoctorProfileSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -39,11 +38,10 @@ class DoctorProfileView(APIView):
     
 
 class DoctorAppointmentsView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminOrDoctor]
 
     def get(self, request):
-        if request.user.role != 'Doctor':
-            return Response({'error': 'Only doctors can access this resource.'}, status=status.HTTP_403_FORBIDDEN)
+        
         try:
             doctor_profile = DoctorProfile.objects.get(user=request.user)
             appointments = Appointment.objects.filter(doctor=doctor_profile, appointment_time__gte=now())
@@ -54,11 +52,9 @@ class DoctorAppointmentsView(APIView):
 
 
 class AppointmentManagementView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminOrDoctor]
 
     def post(self, request):
-        if request.user.role != 'Admin':
-            return Response({'error': 'Only admins can create appointments.'}, status=status.HTTP_403_FORBIDDEN)
         serializer = AppointmentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -66,8 +62,6 @@ class AppointmentManagementView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def patch(self, request, pk):
-        if request.user.role != 'Doctor':
-            return Response({'error': 'Only doctors can update appointment statuses.'}, status=status.HTTP_403_FORBIDDEN)
         try:
             appointment = Appointment.objects.get(pk=pk)
             serializer = AppointmentSerializer(appointment, data=request.data, partial=True)
