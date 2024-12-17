@@ -12,15 +12,15 @@ from rooms_management.models import Room
 
 
 class PatientRecordSerializer(serializers.ModelSerializer):
-    patient_name = serializers.CharField(source='patient.user.username', read_only=True)
+    #patient_name = serializers.CharField(source='patient.user.username', read_only=True)
     created_by_name = serializers.CharField(source='created_by.username', read_only=True)
     doctor_name = serializers.CharField(source='doctor.user.username', read_only=True)
-    room = serializers.CharField(source='room.room_number', read_only=True)
+    # room = serializers.CharField(source='room.room_number', read_only=True)
 
     class Meta:
         model = PatientRecord
-        fields = ['id', 'patient', 'patient_name', 'created_by', 'created_by_name', 'admission_date', 
-                  'discharge_date', 'diagnosis', 'treatment', 'doctor', 'doctor_name', 'room', 'room_number']
+        fields = ['id',  'created_by', 'created_by_name', 'admission_date', 
+                  'discharge_date', 'diagnosis', 'treatment', 'doctor', 'doctor_name', ]
         read_only_fields = ['created_by']
 
     # def validate_patient(self, value):
@@ -49,3 +49,4 @@ class PatientRecordSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("Discharge date cannot be earlier than admission date.")
         return attrs
 
+# 'patient', 'patient_name','room', 'room_number' # add these to the fields
