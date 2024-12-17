@@ -4,6 +4,16 @@ from user_management.models import User
 from rooms_management.models import Room
 from doctor_management.models import DoctorProfile
 
+class NurseProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='nurse_profile')
+    department = models.CharField(max_length=100)
+    experience_years = models.PositiveIntegerField()
+    contact_number = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.user.username
+
+
 class NursePatientUpdate(models.Model):
     nurse = models.ForeignKey(User, on_delete=models.CASCADE, related_name='nurse_patient_updates')
     #patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE, related_name='nurse_updates')  # Changed from PatientProfile

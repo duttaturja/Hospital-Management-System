@@ -36,5 +36,6 @@ urlpatterns = [
     path('api/doctor/', include('doctor_management.urls')),
     path('api/nurse/', include('nurse_management.urls')),
     # path('api/bill/', include('bill_management.urls')),
-    # path('api/records/', include('records_management.urls')),
+    path('api/records/', include('records_management.urls')),
+    # path('api/staff/', include('staff_management.urls')),
 ]

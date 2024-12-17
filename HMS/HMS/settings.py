@@ -57,6 +57,7 @@ THIRD_PARTY_APPS=[
     'rest_framework_simplejwt.token_blacklist',
     'jazzmin',
     'django_redis',
+    'django_filters',
 ]
 INSTALLED_APPS =DJANGO_APPS + USER_APPS + THIRD_PARTY_APPS
 

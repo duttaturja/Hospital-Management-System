@@ -4,22 +4,43 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-from .models import NursePatientUpdate, NurseRoomAssignment
-from .serializers import NursePatientUpdateSerializer, NurseRoomAssignmentSerializer
+from .models import NursePatientUpdate, NurseRoomAssignment, NurseProfile
+from .serializers import NursePatientUpdateSerializer, NurseRoomAssignmentSerializer, NurseProfileSerializer
 
-class NursePatientUpdateView(APIView):
-    permission_classes = [IsAuthenticated]
+# from permissions
+from nurse_management.permissions import IsAdminOrNurse, IsNurseOnly
+
+class NurseProfileView(APIView):
+    permission_classes = [IsAuthenticated, IsNurseOnly]
 
     def get(self, request):
-        if request.user.role != 'Nurse':
-            return Response({'error': 'Only nurses can access this resource.'}, status=status.HTTP_403_FORBIDDEN)
+        try:
+            nurse_profile = NurseProfile.objects.get(user=request.user)
+            serializer = NurseProfileSerializer(nurse_profile)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except NurseProfile.DoesNotExist:
+            return Response({"error": "Nurse profile not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+    def put(self, request):
+        try:
+            nurse_profile = NurseProfile.objects.get(user=request.user)
+            serializer = NurseProfileSerializer(nurse_profile, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except NurseProfile.DoesNotExist:
+            return Response({"error": "Nurse profile not found"}, status=status.HTTP_404_NOT_FOUND) 
+
+class NursePatientUpdateView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminOrNurse]
+
+    def get(self, request):
         updates = NursePatientUpdate.objects.filter(nurse=request.user)
         serializer = NursePatientUpdateSerializer(updates, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        if request.user.role != 'Nurse':
-            return Response({'error': 'Only nurses can send updates.'}, status=status.HTTP_403_FORBIDDEN)
         serializer = NursePatientUpdateSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(nurse=request.user)
@@ -27,18 +48,14 @@ class NursePatientUpdateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class NurseRoomAssignmentView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminOrNurse]
 
     def get(self, request):
-        if request.user.role != 'Nurse':
-            return Response({'error': 'Only nurses can view room assignments.'}, status=status.HTTP_403_FORBIDDEN)
         assignments = NurseRoomAssignment.objects.filter(nurse=request.user, is_active=True)
         serializer = NurseRoomAssignmentSerializer(assignments, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        if request.user.role != 'Nurse':
-            return Response({'error': 'Only nurses can manage room assignments.'}, status=status.HTTP_403_FORBIDDEN)
         serializer = NurseRoomAssignmentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(nurse=request.user)
