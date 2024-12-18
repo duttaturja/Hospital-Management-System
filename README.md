@@ -308,12 +308,6 @@ For questions or support, contact us:
 - **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com),    [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
 - **GitHub:** [@duttaturja](https://github.com/duttaturja),    [@ProbalSourav](https://github.com/ProbalSourav)
 
---- 
-
-## 🖑 Contribution
-
-Thank You for visiting our repository! Feel free to contribute to this repository while submitting a Pull Request. Follow and star will be appreciated <3.
-
 ___
 
 This README provides all essential details for understanding, installing, and contributing to the **Hospital Management System** project.
