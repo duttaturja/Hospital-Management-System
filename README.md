@@ -58,13 +58,34 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 ---
 ## 📂 Project Structure
 
-```markdown
+```plaintext
 Hospital-Management-System/ 
 ├── HMS/
-| ├── bill_management/ # Handles Payments like Salaries, Invoices
-      <details>
-| │ ├── <summary>...</summary>
+| ├── bill_management/     # Handles Payments like Salaries, Invoices
+| ├── doctor_management/   # Manages Doctor
+│ ├── HMS/                 # Core app
+| ├── nurse_management/    # Manages Nurse
+| ├── patient_management/  # Manages Patient
+| ├── records_management/  # Handles Patient records
+| ├── rooms_management/    # Handles rooms
+| ├── staff_management/    # Manages Staffs
+| ├── user_management/     # Handles User login, registration and Admin
+│ ├── db.sqlite3           # Database
+│ └── manage.py            # Driver file
+├── venv
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
+```
 
+<details>
+<summary> Click to Expand Project Structure</summary>
+
+```plaintext
+Hospital-Management-System/ 
+├── HMS/
+| ├── bill_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -80,12 +101,7 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
-| ├── doctor_management/ # Manages Doctor
-      <details>
-| │ ├── <summary>...</summary>
-
+| ├── doctor_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -101,23 +117,13 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
 │ ├── HMS/
-      <details> # Core app
-| │ ├── <summary>...</summary>
-
 | │ ├── init.py 
 | │ ├── asgi.py 
 | │ ├── settings.py 
 | │ ├── urls.py 
 | │ └── wsgi.py 
-
-   </details>
-| ├── nurse_management/ # Manages Nurse
-      <details>
-| │ ├── <summary>...</summary>
-
+| ├── nurse_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -133,12 +139,7 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
-| ├── patient_management/ # Manages Patient
-      <details>
-| │ ├── <summary>...</summary>
-
+| ├── patient_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -154,12 +155,7 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
-| ├── records_management/ # Handles Patient records
-      <details>
-| │ ├── <summary>...</summary>
-
+| ├── records_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -175,12 +171,7 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
-| ├── rooms_management/ # Handles rooms
-      <details>
-| │ ├── <summary>...</summary>
-
+| ├── rooms_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -196,12 +187,7 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
-| ├── staff_management/ # Manages Staffs
-      <details>
-| │ ├── <summary>...</summary>
-
+| ├── staff_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -217,12 +203,7 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
-| ├── user_management/ # Handles User login, registration and Admin
-      <details>
-| │ ├── <summary>...</summary>
-
+| ├── user_management/
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -238,8 +219,6 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
-
-   </details>
 │ ├── db.sqlite3 
 │ └── manage.py
 ├── venv
@@ -247,9 +226,9 @@ Hospital-Management-System/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
-
 ```
 
+</details>
 
 ---
 
@@ -329,8 +308,12 @@ For questions or support, contact us:
 - **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com),    [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
 - **GitHub:** [@duttaturja](https://github.com/duttaturja),    [@ProbalSourav](https://github.com/ProbalSourav)
 
----  
-Thank You for visiting our repository! Feel free to contribute to this repository while submitting a Pull Request. Follow and star will be appreciated <3
+--- 
+
+## 🖑 Contribution
+
+Thank You for visiting our repository! Feel free to contribute to this repository while submitting a Pull Request. Follow and star will be appreciated <3.
+
 ___
 
 This README provides all essential details for understanding, installing, and contributing to the **Hospital Management System** project.
