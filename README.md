@@ -58,7 +58,7 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 ---
 ## 📂 Project Structure
 
-```
+```markdown
 Hospital-Management-System/ 
 ├── HMS/
 | ├── bill_management/ # Handles Payments like Salaries, Invoices
