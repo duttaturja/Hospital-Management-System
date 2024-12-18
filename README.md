@@ -58,10 +58,10 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 ---
 ## 📂 Project Structure
 
-```
+```plaintext
 Hospital-Management-System/ 
 ├── HMS/
-| ├── bill_management/
+| ├── bill_management/ # Handles Payments like Salaries, Invoices
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -80,7 +80,7 @@ Hospital-Management-System/
 | │ ├── urls.py 
 | │ └── views.py
       </details>
-| ├── doctor_management/
+| ├── doctor_management/ # Manages Doctor
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -100,7 +100,7 @@ Hospital-Management-System/
 | │ └── views.py
       </details>
 │ ├── HMS/
-      <details>
+      <details> # Core app
 | │ ├── <summary>...</summary>
 | │ ├── init.py 
 | │ ├── asgi.py 
@@ -108,7 +108,7 @@ Hospital-Management-System/
 | │ ├── urls.py 
 | │ └── wsgi.py 
       </details>
-| ├── nurse_management/
+| ├── nurse_management/ # Manages Nurse
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -127,7 +127,7 @@ Hospital-Management-System/
 | │ ├── urls.py 
 | │ └── views.py
       </details>
-| ├── patient_management/
+| ├── patient_management/ # Manages Patient
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -146,7 +146,7 @@ Hospital-Management-System/
 | │ ├── urls.py 
 | │ └── views.py
       </details>
-| ├── records_management/
+| ├── records_management/ # Handles Patient records
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -165,7 +165,7 @@ Hospital-Management-System/
 | │ ├── urls.py 
 | │ └── views.py
       </details>
-| ├── rooms_management/
+| ├── rooms_management/ # Handles rooms
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -184,7 +184,7 @@ Hospital-Management-System/
 | │ ├── urls.py 
 | │ └── views.py
       </details>
-| ├── staff_management/
+| ├── staff_management/ # Manages Staffs
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -203,7 +203,7 @@ Hospital-Management-System/
 | │ ├── urls.py 
 | │ └── views.py
       </details>
-| ├── user_management/
+| ├── user_management/ # Handles User login, registration and Admin
       <details>
 | │ ├── <summary>...</summary>
 | │ ├── migrations/
@@ -231,7 +231,7 @@ Hospital-Management-System/
 └── requirements.txt
 
 ```
-</details>
+
 
 ---
 
