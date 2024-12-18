@@ -5,6 +5,19 @@
 The **Hospital Management System (HMS)** is a user-friendly, efficient, and secure solution designed to simplify and streamline the administrative and clinical processes of healthcare facilities. This system integrates essential hospital functions, reducing manual work and enhancing patient care.  
 
 ---
+## 📑 Table of Contents  
+
+- [✨ Features](#-features)  
+- [💡 Benefits](#-benefits)  
+- [📂 Project Structure](#-project-structure)  
+- [🚀 Getting Started](#-getting-started)  
+- [🔧 Usage](#-usage)  
+- [🤝 Contribution](#-contribution)  
+- [📄 License](#-license)  
+- [🙌 Acknowledgments](#-acknowledgments)  
+- [📞 Contact](#-contact)  
+
+---
 
 ## ✨ Features  
 
@@ -45,7 +58,31 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 ---
 ## 📂 Project Structure
 
+```plaintext
+Hospital-Management-System/ 
+├── HMS/
+| ├── bill_management/     # Handles Payments like Salaries, Invoices
+| ├── doctor_management/   # Manages Doctor
+│ ├── HMS/                 # Core app
+| ├── nurse_management/    # Manages Nurse
+| ├── patient_management/  # Manages Patient
+| ├── records_management/  # Handles Patient records
+| ├── rooms_management/    # Handles rooms
+| ├── staff_management/    # Manages Staffs
+| ├── user_management/     # Handles User login, registration and Admin
+│ ├── db.sqlite3           # Database
+│ └── manage.py            # Driver file
+├── venv
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
+
+<details>
+<summary> Click to Expand Project Structure</summary>
+
+```plaintext
 Hospital-Management-System/ 
 ├── HMS/
 | ├── bill_management/
@@ -189,8 +226,9 @@ Hospital-Management-System/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
-
 ```
+
+</details>
 
 ---
 
@@ -248,7 +286,12 @@ We welcome contributions to improve this system. To contribute:
 
 ## 📄 License  
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.  
+This project is licensed under the MIT License. However, if you use or distribute this project, you **must provide appropriate credit** to the original authors by mentioning:  
+
+- **Project Name:** Hospital Management System  
+- **Original Authors:** [duttaturja](https://github.com/duttaturja) and [ProbalSourav](https://github.com/ProbalSourav)  
+
+See the [LICENSE](LICENSE) file for detailed terms.  
 
 ---
 
@@ -262,9 +305,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 📞 Contact  
 
 For questions or support, contact us:  
-- **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com) [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
-- **GitHub:** [@duttaturja](https://github.com/duttaturja)  [@ProbalSourav](https://github.com/ProbalSourav)
+- **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com),    [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
+- **GitHub:** [@duttaturja](https://github.com/duttaturja),    [@ProbalSourav](https://github.com/ProbalSourav)
 
----  
+--- 
+
+## 🖑 Contribution
+
+Thank You for visiting our repository! Feel free to contribute to this repository while submitting a Pull Request. Follow and star will be appreciated <3.
+
+___
 
 This README provides all essential details for understanding, installing, and contributing to the **Hospital Management System** project.

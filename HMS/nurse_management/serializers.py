@@ -12,11 +12,21 @@ class NursePatientUpdateSerializer(serializers.ModelSerializer):
         model = NursePatientUpdate
         fields = ['id', 'nurse', 'patient', 'doctor', 'update_text', 'timestamp']
 
+    def validate_assigned_patients(self, nurse):
+        if nurse.assigned_patients.count() > 10:
+            raise serializers.ValidationError("A nurse cannot be assigned to more than 10 patients.")
+        return nurse
+
+
 class NurseRoomAssignmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = NurseRoomAssignment
         fields = ['id', 'nurse', 'room', 'patient', 'assigned_date', 'is_active']
-
+        
+    def validate_assigned_patients(self, nurse):
+        if nurse.assigned_patients.count() > 10:
+            raise serializers.ValidationError("A nurse cannot be assigned to more than 10 patients.")
+        return nurse
 
 class NurseProfileSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
