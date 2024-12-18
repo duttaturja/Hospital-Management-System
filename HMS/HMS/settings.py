@@ -48,8 +48,8 @@ USER_APPS=[
     'records_management',
     'rooms_management',
     'user_management',
+    'staff_management',
 ]
-
 
 THIRD_PARTY_APPS=[
     'rest_framework',
@@ -59,6 +59,7 @@ THIRD_PARTY_APPS=[
     'django_redis',
     'django_filters',
 ]
+
 INSTALLED_APPS =DJANGO_APPS + USER_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
@@ -192,7 +193,7 @@ CACHES = {
 # # API documentation settings
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Hospital Management System API',
-    'DESCRIPTION': 'Api documentation for Hospital Management System',
+    'DESCRIPTION': 'Api documentation for Hospital Management System made by ProbalSourav and duttaturja',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS

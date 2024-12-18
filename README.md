@@ -43,6 +43,156 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 - **Data Security:** Protects sensitive information through advanced encryption and role-based access.  
 
 ---
+## 📂 Project Structure
+
+```
+Hospital-Management-System/ 
+├── HMS/
+| ├── bill_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+| ├── doctor_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+│ ├── HMS/
+| │ ├── init.py 
+| │ ├── asgi.py 
+| │ ├── settings.py 
+| │ ├── urls.py 
+| │ └── wsgi.py 
+| ├── nurse_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+| ├── patient_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+| ├── records_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+| ├── rooms_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+| ├── staff_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+| ├── user_management/
+| │ ├── migrations/
+| │ ├── templates/
+| │ ├── __init__.py 
+| │ ├── admin.py 
+| │ ├── apps.py
+| │ ├── filters.py 
+| │ ├── forms.py 
+| │ ├── middlewares.py
+| │ ├── models.py 
+| │ ├── permissions.py 
+| │ ├── serializers.py
+| │ ├── signals.py 
+| │ ├── tests.py 
+| │ ├── urls.py 
+| │ └── views.py
+│ ├── db.sqlite3 
+│ └── manage.py
+├── venv
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
+
+```
+
+---
 
 ## 🚀 Getting Started  
 

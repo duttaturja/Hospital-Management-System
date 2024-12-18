@@ -19,5 +19,5 @@ class PatientRecord(models.Model):
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True, related_name='room_records')
     timestamp = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"Record for {self.patient} created by {self.created_by} at {self.timestamp}"
+    # def __str__(self):
+    #     return f"Record for {self.patient} created by {self.created_by} at {self.timestamp}"
