@@ -31,11 +31,11 @@ urlpatterns = [
 
     #local apps api urls
     path('api/user/', include('user_management.urls')),
-    # path('api/rooms/', include('rooms_management.urls')),
+    path('api/rooms/', include('rooms_management.urls')),
     # path('api/patient/', include('patient_management.urls')),
     path('api/doctor/', include('doctor_management.urls')),
     path('api/nurse/', include('nurse_management.urls')),
-    # path('api/bill/', include('bill_management.urls')),
+    path('api/bill/', include('bill_management.urls')),
     path('api/records/', include('records_management.urls')),
     path('api/staff/', include('staff_management.urls')),
 ]
