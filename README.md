@@ -58,12 +58,13 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 ---
 ## 📂 Project Structure
 
-```plaintext
+```
 Hospital-Management-System/ 
 ├── HMS/
 | ├── bill_management/ # Handles Payments like Salaries, Invoices
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -79,10 +80,12 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 | ├── doctor_management/ # Manages Doctor
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -98,19 +101,23 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 │ ├── HMS/
       <details> # Core app
 | │ ├── <summary>...</summary>
+
 | │ ├── init.py 
 | │ ├── asgi.py 
 | │ ├── settings.py 
 | │ ├── urls.py 
 | │ └── wsgi.py 
+
       </details>
 | ├── nurse_management/ # Manages Nurse
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -126,10 +133,12 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 | ├── patient_management/ # Manages Patient
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -145,10 +154,12 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 | ├── records_management/ # Handles Patient records
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -164,10 +175,12 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 | ├── rooms_management/ # Handles rooms
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -183,10 +196,12 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 | ├── staff_management/ # Manages Staffs
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -202,10 +217,12 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 | ├── user_management/ # Handles User login, registration and Admin
       <details>
 | │ ├── <summary>...</summary>
+
 | │ ├── migrations/
 | │ ├── templates/
 | │ ├── __init__.py 
@@ -221,6 +238,7 @@ Hospital-Management-System/
 | │ ├── tests.py 
 | │ ├── urls.py 
 | │ └── views.py
+
       </details>
 │ ├── db.sqlite3 
 │ └── manage.py
