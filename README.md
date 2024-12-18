@@ -5,6 +5,19 @@
 The **Hospital Management System (HMS)** is a user-friendly, efficient, and secure solution designed to simplify and streamline the administrative and clinical processes of healthcare facilities. This system integrates essential hospital functions, reducing manual work and enhancing patient care.  
 
 ---
+## 📑 Table of Contents  
+
+- [✨ Features](#-features)  
+- [💡 Benefits](#-benefits)  
+- [📂 Project Structure](#-project-structure)  
+- [🚀 Getting Started](#-getting-started)  
+- [🔧 Usage](#-usage)  
+- [🤝 Contribution](#-contribution)  
+- [📄 License](#-license)  
+- [🙌 Acknowledgments](#-acknowledgments)  
+- [📞 Contact](#-contact)  
+
+---
 
 ## ✨ Features  
 
@@ -44,7 +57,8 @@ The **Hospital Management System (HMS)** is a user-friendly, efficient, and secu
 
 ---
 ## 📂 Project Structure
-
+<details>
+<summary>Click to Expand Project Structure</summary>
 ```
 Hospital-Management-System/ 
 ├── HMS/
@@ -191,6 +205,7 @@ Hospital-Management-System/
 └── requirements.txt
 
 ```
+</details>
 
 ---
 
@@ -248,7 +263,12 @@ We welcome contributions to improve this system. To contribute:
 
 ## 📄 License  
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.  
+This project is licensed under the MIT License. However, if you use or distribute this project, you **must provide appropriate credit** to the original authors by mentioning:  
+
+- **Project Name:** Hospital Management System  
+- **Original Authors:** [duttaturja](https://github.com/duttaturja) and [ProbalSourav](https://github.com/ProbalSourav)  
+
+See the [LICENSE](LICENSE) file for detailed terms.  
 
 ---
 
@@ -262,8 +282,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 📞 Contact  
 
 For questions or support, contact us:  
-- **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com) [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
-- **GitHub:** [@duttaturja](https://github.com/duttaturja)  [@ProbalSourav](https://github.com/ProbalSourav)
+- **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com),    [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
+- **GitHub:** [@duttaturja](https://github.com/duttaturja),    [@ProbalSourav](https://github.com/ProbalSourav)
 
 ---  
 
