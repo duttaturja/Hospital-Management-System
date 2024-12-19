@@ -1,7 +1,7 @@
 from django.db import models
 from user_management.models import User
 from doctor_management.models import DoctorProfile
-from room_management.models import Room  
+from rooms_management.models import Room  
 
 class PatientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='patient_profile')
