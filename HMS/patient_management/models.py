@@ -1,8 +1,8 @@
 from django.db import models
 from user_management.models import User
 from doctor_management.models import DoctorProfile
-from rooms_management.models import Room  
 
+# Use string notation to avoid circular imports for models from other apps
 class PatientProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='patient_profile')
     date_of_birth = models.DateField()
@@ -17,7 +17,9 @@ class Admission(models.Model):
     admission_date = models.DateTimeField(auto_now_add=True)
     discharge_date = models.DateTimeField(blank=True, null=True)
     reason = models.TextField()
-    room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True, blank=True, related_name='admissions')
+
+    # Use string notation to avoid circular imports
+    room = models.ForeignKey('rooms_management.Room', on_delete=models.SET_NULL, null=True, blank=True, related_name='admissions')
 
 class AppointmentBooking(models.Model):
     patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE, related_name='appointments')
