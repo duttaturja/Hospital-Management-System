@@ -4,5 +4,5 @@ from .views import PatientRecordListCreateView, PatientRecordRetrieveUpdateDestr
 urlpatterns = [
     path('all-records/', PatientRecordListCreateView.as_view(), name='patient_records_list_create'),
     path('records/<int:pk>/', PatientRecordRetrieveUpdateDestroyView.as_view(), name='patient_record_detail'),
-     path('records/', PatientRecordView.as_view(), name='patient_records'),
+    path('records/', PatientRecordView.as_view(), name='patient_records'),
 ]
