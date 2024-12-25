@@ -157,7 +157,7 @@ AUTH_USER_MODEL = 'user_management.User'
 
 # rest_framework
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_PROCESS': [
+    'DEFAULT_AUTHENTICATION_CLASSES': [  # Correct key
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
