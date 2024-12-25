@@ -58,9 +58,10 @@ THIRD_PARTY_APPS=[
     'jazzmin',
     'django_redis',
     'django_filters',
+    'drf_yasg',
 ]
 
-INSTALLED_APPS =DJANGO_APPS + USER_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + USER_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,6 +153,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'user_management.User'
 
 # rest_framework
 REST_FRAMEWORK = {
@@ -198,3 +200,7 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
