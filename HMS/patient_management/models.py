@@ -1,6 +1,8 @@
 from django.db import models
 from user_management.models import User
 from doctor_management.models import DoctorProfile
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Use string notation to avoid circular imports for models from other apps
 class PatientProfile(models.Model):
@@ -26,3 +28,15 @@ class AppointmentBooking(models.Model):
     doctor = models.ForeignKey(DoctorProfile, on_delete=models.CASCADE, related_name='booked_appointments')
     appointment_date = models.DateTimeField()
     symptoms = models.TextField()
+
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     """Create a Profile instance whenever a new User is created."""
+#     if created:
+#         PatientProfile.objects.create(user=instance)
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     """Ensure the Profile is saved whenever the User is saved."""
+#     instance.PatientProfile.save()

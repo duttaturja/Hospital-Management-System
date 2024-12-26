@@ -5,11 +5,11 @@ from django.db import models
 from user_management.models import User
 from doctor_management.models import DoctorProfile
 from rooms_management.models import Room
-# from patient_management.models import PatientProfile
+from patient_management.models import PatientProfile
 
 
 class PatientRecord(models.Model):
-    # patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE, related_name='records')
+    patient = models.OneToOneField(PatientProfile, on_delete=models.CASCADE, related_name='records')
     admission_date = models.DateField()
     discharge_date = models.DateField(null=True, blank=True)
     diagnosis = models.TextField()

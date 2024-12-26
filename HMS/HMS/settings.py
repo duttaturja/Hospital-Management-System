@@ -157,11 +157,12 @@ AUTH_USER_MODEL = 'user_management.User'
 
 # rest_framework
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [  # Correct key
+    'DEFAULT_AUTHENTICATION_CLASSES': [ 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',    
+        'rest_framework.permissions.IsAuthenticated',    
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -174,11 +175,9 @@ REST_FRAMEWORK = {
 
 # simple-JWT settings
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKEN': True,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'TOKEN_OBTAIN_SERIALIZER' : 'user.serializers.CustomClaimTokenObtainSerializer',
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 #Cache backend using Redis

@@ -40,3 +40,4 @@ class Invoice(models.Model):
 
     def __str__(self):
         return f"Invoice for {self.patient.user.full_name} on {self.issued_date}"
+

@@ -5,9 +5,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import PatientProfile, Admission, AppointmentBooking
 from .serializers import PatientProfileSerializer, AdmissionSerializer, AppointmentBookingSerializer
+from user_management.permissions import IsPatient
 
 class PatientProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsPatient]
 
     def get(self, request):
         if request.user.role != 'Patient':
