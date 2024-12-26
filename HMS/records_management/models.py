@@ -10,10 +10,10 @@ from patient_management.models import PatientProfile
 
 class PatientRecord(models.Model):
     patient = models.OneToOneField(PatientProfile, on_delete=models.CASCADE, related_name='records')
-    admission_date = models.DateField()
+    admission_date = models.DateField(blank=True, null=True)
     discharge_date = models.DateField(null=True, blank=True)
-    diagnosis = models.TextField()
-    treatment = models.TextField()
+    diagnosis = models.TextField(blank=True, null=True)
+    treatment = models.TextField(blank=True, null=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='created_records')
     doctor = models.ForeignKey(DoctorProfile, on_delete=models.SET_NULL, null=True, related_name='doctor_records')
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True, related_name='room_records')

@@ -27,7 +27,7 @@ class DoctorProfileView(APIView):
         except DoctorProfile.DoesNotExist:
             return Response({"error": "Doctor profile not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    def post(self, request):
+    def patch(self, request):
         
         serializer = DoctorProfileSerializer(data=request.data)
         if serializer.is_valid():

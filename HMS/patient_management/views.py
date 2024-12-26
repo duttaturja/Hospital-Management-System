@@ -20,13 +20,21 @@ class PatientProfileView(APIView):
         except PatientProfile.DoesNotExist:
             return Response({'error': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-    def post(self, request):
+    def patch(self, request, pk):
         if request.user.role != 'Patient':
-            return Response({'error': 'Only patients can create their profiles.'}, status=status.HTTP_403_FORBIDDEN)
-        serializer = PatientProfileSerializer(data=request.data)
+            return Response({'error': 'Only patients can update their profiles.'}, status=status.HTTP_403_FORBIDDEN)
+
+        try:
+            # Assuming you have a PatientProfile model and you're using its primary key (pk) to identify the profile
+            patient_profile = PatientProfile.objects.get(pk=pk, user=request.user)
+        except PatientProfile.DoesNotExist:
+            return Response({'error': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = PatientProfileSerializer(patient_profile, data=request.data, partial=True)  # partial=True allows partial updates
         if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+    
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

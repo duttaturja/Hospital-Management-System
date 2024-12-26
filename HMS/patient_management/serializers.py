@@ -6,6 +6,7 @@ class PatientProfileSerializer(serializers.ModelSerializer):
         model = PatientProfile
         fields = ['id', 'user', 'date_of_birth', 'address', 'contact_number', 'emergency_contact', 'medical_history', 'assigned_doctor']
         depth = 1
+        extra_kwargs = {'user': {'read_only': True}}
 
 class AdmissionSerializer(serializers.ModelSerializer):
     class Meta:

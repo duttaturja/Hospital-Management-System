@@ -8,10 +8,10 @@ from .models import NursePatientUpdate, NurseRoomAssignment, NurseProfile
 from .serializers import NursePatientUpdateSerializer, NurseRoomAssignmentSerializer, NurseProfileSerializer
 
 # from permissions
-from nurse_management.permissions import IsAdminOrNurse, IsNurseOnly
+from user_management.permissions import  IsNurse
 
 class NurseProfileView(APIView):
-    permission_classes = [IsAuthenticated, IsNurseOnly]
+    permission_classes = [IsAuthenticated, IsNurse]
 
     def get(self, request):
         try:
@@ -21,7 +21,7 @@ class NurseProfileView(APIView):
         except NurseProfile.DoesNotExist:
             return Response({"error": "Nurse profile not found"}, status=status.HTTP_404_NOT_FOUND)
         
-    def put(self, request):
+    def patch(self, request):
         try:
             nurse_profile = NurseProfile.objects.get(user=request.user)
             serializer = NurseProfileSerializer(nurse_profile, data=request.data)
@@ -33,7 +33,7 @@ class NurseProfileView(APIView):
             return Response({"error": "Nurse profile not found"}, status=status.HTTP_404_NOT_FOUND) 
 
 class NursePatientUpdateView(APIView):
-    permission_classes = [IsAuthenticated, IsAdminOrNurse]
+    permission_classes = [IsAuthenticated, IsNurse]
 
     def get(self, request):
         updates = NursePatientUpdate.objects.filter(nurse=request.user)
@@ -48,7 +48,7 @@ class NursePatientUpdateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class NurseRoomAssignmentView(APIView):
-    permission_classes = [IsAuthenticated, IsAdminOrNurse]
+    permission_classes = [IsAuthenticated, IsNurse]
 
     def get(self, request):
         assignments = NurseRoomAssignment.objects.filter(nurse=request.user, is_active=True)

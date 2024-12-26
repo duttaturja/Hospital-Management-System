@@ -87,7 +87,7 @@ class UserLoginJWTView(generics.GenericAPIView):
             user_serializer = UserSerializer(user)
             access = str(refresh.access_token)
             redirect_url = 'http://localhost:8000/api/user/login/'
-            if user.role == "atient":
+            if user.role == "Patient":
                 redirect_url = 'http://localhost:8000/api/patient/profile/'
             elif user.role == "Doctor":
                 redirect_url = 'http://localhost:8000/api/doctor/profile/'
