@@ -307,7 +307,3 @@ See the [LICENSE](LICENSE) file for detailed terms.
 For questions or support, contact us:  
 - **Email:** [duttaturja@gmail.com](mailto:duttaturja@gmail.com),    [probalnath50@gmail.com](mailto:probalnath50@gmail.com)
 - **GitHub:** [@duttaturja](https://github.com/duttaturja),    [@ProbalSourav](https://github.com/ProbalSourav)
-
-___
-
-This README provides all essential details for understanding, installing, and contributing to the **Hospital Management System** project.
