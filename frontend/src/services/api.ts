@@ -1,19 +1,25 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
-// Create an Axios instance
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Request interceptor to add the auth token to headers
+// Endpoints that do not need the token
+const publicEndpoints = ['/user/login/', '/user/register/'];
+
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
-    if (token) {
+    
+    // Only add token if it exists AND the endpoint is not public
+    // We check if the config.url matches any public endpoint
+    const isPublicEndpoint = publicEndpoints.some(endpoint => config.url?.includes(endpoint));
+
+    if (token && !isPublicEndpoint) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
@@ -23,25 +29,20 @@ apiClient.interceptors.request.use(
   }
 );
 
-// Response interceptor to handle global errors
 apiClient.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
     if (error.response?.status === 401) {
-      // Handle unauthorized access
-      // For example, logout the user and redirect to login
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      toast.error('Session expired. Please log in again.');
-      // This will force a reload and redirect via ProtectedRoute
-      window.location.href = '/login';
+      // Only logout if we are NOT on the login page already
+      if (!window.location.pathname.includes('/login')) {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        toast.error('Session expired. Please log in again.');
+        window.location.href = '/login';
+      }
     }
-
-    // You can handle other global errors here
-    // e.g., 500, 404, etc.
-
     return Promise.reject(error);
   }
 );

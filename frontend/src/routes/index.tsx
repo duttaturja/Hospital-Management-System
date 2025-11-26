@@ -1,21 +1,23 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
-import DashboardPage from '../pages/DashboardPage';
 import ErrorPage from '../pages/ErrorPage';
-import HomePage from '../pages/HomePage';
-import LandingPage from '../pages/LandingPage';
 import LoginPage from '../pages/LoginPage';
+import SignUpPage from '../pages/SignUpPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import ProtectedRoute from './ProtectedRoute';
-import ContactPage from '../pages/ContactPage';
-import AboutPage from '../pages/AboutPage';
-import SignUpPage from '../pages/SignUpPage';
-import ForgotPasswordPage from '../pages/ForgotPasswordPage';
-import ResetPasswordPage from '../pages/ResetPasswordPage';
 import ProfileSettingsPage from '../pages/ProfileSettingsPage';
-import ChatPage from '../pages/ChatPage';
-import TermsOfServicePage from '../pages/TermsOfServicePage';
-import PrivacyPolicyPage from '../pages/PrivacyPolicyPage';
+
+// Landing / Shared
+import LandingPage from '../pages/LandingPage';
+import DashboardPage from '../pages/DashboardPage';
+
+// Role Specific Dashboards
+import PatientDashboardPage from '../pages/patient/PatientDashboardPage';
+import DoctorDashboardPage from '../pages/doctor/DoctorDashboardPage';
+
+import MyAppointmentsPage from '../pages/patient/MyAppointmentsPage';
+import BookAppointmentPage from '../pages/patient/BookAppointmentPage';
+import MyAdmissionsPage from '../pages/patient/MyAdmissionsPage';
 
 const router = createBrowserRouter([
   {
@@ -28,28 +30,17 @@ const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: 'components',
-        element: <HomePage />,
+        path: 'login',
+        element: <LoginPage />,
       },
       {
-        path: 'contact',
-        element: <ContactPage />,
-      },
-      {
-        path: 'about',
-        element: <AboutPage />,
-      },
-      {
-        path: 'terms-of-service',
-        element: <TermsOfServicePage />,
-      },
-      {
-        path: 'privacy-policy',
-        element: <PrivacyPolicyPage />,
+        path: 'signup',
+        element: <SignUpPage />,
       },
       {
         element: <ProtectedRoute />,
         children: [
+          // General Dashboard (Redirects based on role in component or shows generic)
           {
             path: 'dashboard',
             element: <DashboardPage />,
@@ -58,9 +49,39 @@ const router = createBrowserRouter([
             path: 'profile',
             element: <ProfileSettingsPage />,
           },
+          
+          // Patient Routes
           {
-            path: 'chat',
-            element: <ChatPage />,
+            path: 'patient/dashboard',
+            element: <PatientDashboardPage />,
+          },
+          {
+            path: 'patient/appointments',
+            element: <MyAppointmentsPage />,
+          },
+          {
+            path: 'patient/book-appointment',
+            element: <BookAppointmentPage />,
+          },
+          {
+            path: 'patient/admissions',
+            element: <MyAdmissionsPage />,
+          },
+          
+          // Doctor Routes
+          {
+            path: 'doctor/dashboard',
+            element: <DoctorDashboardPage />,
+          },
+
+          // Placeholders for future implementation
+          {
+            path: 'nurse/dashboard',
+            element: <div className="p-8">Nurse Dashboard (Coming Soon)</div>,
+          },
+          {
+            path: 'admin/dashboard',
+            element: <div className="p-8">Admin Dashboard (Coming Soon)</div>,
           },
         ],
       },
@@ -69,22 +90,6 @@ const router = createBrowserRouter([
         element: <NotFoundPage />,
       },
     ],
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/signup',
-    element: <SignUpPage />,
-  },
-  {
-    path: '/forgot-password',
-    element: <ForgotPasswordPage />,
-  },
-  {
-    path: '/reset-password/:token',
-    element: <ResetPasswordPage />,
   },
 ]);
 

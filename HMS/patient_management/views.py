@@ -10,10 +10,12 @@ from user_management.permissions import IsPatient
 class PatientProfileView(APIView):
     permission_classes = [IsAuthenticated, IsPatient]
 
-    def get(self, request):
+    # FIXED: Added 'pk' parameter to match the URL pattern
+    def get(self, request, pk=None):
         if request.user.role != 'Patient':
             return Response({'error': 'Only patients can access this resource.'}, status=status.HTTP_403_FORBIDDEN)
         try:
+            # We fetch the profile linked to the currently logged-in user
             patient_profile = PatientProfile.objects.get(user=request.user)
             serializer = PatientProfileSerializer(patient_profile)
             return Response(serializer.data)
@@ -25,12 +27,12 @@ class PatientProfileView(APIView):
             return Response({'error': 'Only patients can update their profiles.'}, status=status.HTTP_403_FORBIDDEN)
 
         try:
-            # Assuming you have a PatientProfile model and you're using its primary key (pk) to identify the profile
-            patient_profile = PatientProfile.objects.get(pk=pk, user=request.user)
+            # Using request.user ensures users can only edit their own profile
+            patient_profile = PatientProfile.objects.get(user=request.user)
         except PatientProfile.DoesNotExist:
             return Response({'error': 'Profile not found.'}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = PatientProfileSerializer(patient_profile, data=request.data, partial=True)  # partial=True allows partial updates
+        serializer = PatientProfileSerializer(patient_profile, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

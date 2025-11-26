@@ -1,97 +1,61 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
-import useFetch from '../hooks/useFetch';
-import Loader from '../components/ui/Loader';
-import Button from '../components/ui/Button';
+import { useAuth } from '../hooks/useAuth';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import { Calendar, Activity, DollarSign, Users } from 'lucide-react';
 
-// Example data structure for dashboard stats
-interface StatsData {
-  users: number;
-  projects: number;
-  tasks: number;
-}
+// Role-Specific Dashboard Components could be separated into files
+const PatientStats = () => (
+  <div className='grid gap-4 md:grid-cols-3'>
+    <Card>
+      <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
+        <CardTitle className='text-sm font-medium'>Upcoming Appointments</CardTitle>
+        <Calendar className='h-4 w-4 text-light-muted' />
+      </CardHeader>
+      <CardContent>
+        <div className='text-2xl font-bold'>2</div>
+      </CardContent>
+    </Card>
+    <Card>
+        <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
+        <CardTitle className='text-sm font-medium'>Total Invoices</CardTitle>
+        <DollarSign className='h-4 w-4 text-light-muted' />
+      </CardHeader>
+      <CardContent>
+        <div className='text-2xl font-bold'>$150.00</div>
+      </CardContent>
+    </Card>
+  </div>
+);
+
+const DoctorStats = () => (
+    <div className='grid gap-4 md:grid-cols-3'>
+      <Card>
+        <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
+          <CardTitle className='text-sm font-medium'>Pending Appointments</CardTitle>
+          <Calendar className='h-4 w-4 text-light-muted' />
+        </CardHeader>
+        <CardContent>
+          <div className='text-2xl font-bold'>8</div>
+        </CardContent>
+      </Card>
+    </div>
+  );
 
 const DashboardPage: React.FC = () => {
-  // We use a non-existent endpoint to demonstrate the loading and error states.
-  // When a real backend is connected, this will fetch real data.
-  const { data, isLoading, error, refetch } = useFetch<StatsData>('/stats');
+  const { user } = useAuth();
 
   return (
-    <div className='space-y-4'>
-      <div className='flex items-center justify-between'>
-        <h1 className='text-3xl font-bold text-light-text-primary dark:text-dark-text-primary'>
-          Dashboard
-        </h1>
-        <Button onClick={refetch} disabled={isLoading}>
-          {isLoading ? 'Refreshing...' : 'Refresh Data'}
-        </Button>
-      </div>
+    <div className='space-y-6'>
+      <h1 className='text-3xl font-bold text-light-text-primary dark:text-dark-text-primary'>
+        Dashboard
+      </h1>
+      <p className='text-light-text-secondary dark:text-dark-text-secondary'>
+        Welcome back, {user?.first_name || user?.username}. You are logged in as <strong>{user?.role}</strong>.
+      </p>
 
-      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-        <Card>
-          <CardHeader>
-            <CardTitle>Total Users</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {isLoading ? (
-              <Loader size={24} />
-            ) : error ? (
-              <p className='text-sm text-light-error dark:text-dark-error'>
-                Failed to load data.
-              </p>
-            ) : (
-              <p className='text-2xl font-bold'>{data?.users ?? 'N/A'}</p>
-            )}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Projects</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {isLoading ? (
-              <Loader size={24} />
-            ) : error ? (
-              <p className='text-sm text-light-error dark:text-dark-error'>
-                Failed to load data.
-              </p>
-            ) : (
-              <p className='text-2xl font-bold'>{data?.projects ?? 'N/A'}</p>
-            )}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Tasks Completed</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {isLoading ? (
-              <Loader size={24} />
-            ) : error ? (
-              <p className='text-sm text-light-error dark:text-dark-error'>
-                Failed to load data.
-              </p>
-            ) : (
-              <p className='text-2xl font-bold'>{data?.tasks ?? 'N/A'}</p>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-
-      {error && (
-        <Card className='border-light-error/50 bg-light-error/10 dark:border-dark-error/50 dark:bg-dark-error/10'>
-          <CardHeader>
-            <CardTitle className='text-light-error dark:text-dark-error'>
-              Error Details
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <pre className='text-xs text-light-text-secondary dark:text-dark-text-secondary'>
-              <code>{error.message}</code>
-            </pre>
-          </CardContent>
-        </Card>
-      )}
+      {user?.role === 'Patient' && <PatientStats />}
+      {user?.role === 'Doctor' && <DoctorStats />}
+      {/* Add Admin/Nurse stats logic here */}
     </div>
   );
 };
